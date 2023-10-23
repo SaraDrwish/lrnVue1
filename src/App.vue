@@ -2,7 +2,14 @@
  
      <h1> {{ title}} </h1>
      <div v-if="showModal">
-       <Modal :header="header"  :text="text" theme="saaaaaaaaale"  @close="toggleModal"  />
+       <Modal  theme="saaaaaaaaale"  @close="toggleModal"  >
+
+        <h3>hello this is a slot try title</h3>
+        <p>hi this is a p Lorem ipsum dolor sit amet.</p>
+        <template v-slot:links>
+              <a href="#">more info</a>
+        </template>
+       </Modal>
      </div>
      <button @click="toggleModal" >open model</button>
  </template>
@@ -19,9 +26,8 @@ import Modal from './components/Modal.vue'
   data() {
     return {
       title: "hello vue :)",
-      header: "this is a prop header ",
-      text: "txt prop",
-      showModal: false
+      showModal: false,
+      showModalTwo:false
      }
   },
   methods: {
@@ -32,6 +38,10 @@ import Modal from './components/Modal.vue'
     ,
     toggleModal() {
       this.showModal = !this.showModal
+    }
+    ,
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo
     }
   }
  

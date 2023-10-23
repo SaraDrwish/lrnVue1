@@ -7,9 +7,12 @@
   <!-- //event modifires .self -->
   <div class="backdrop" @click.self="closeModel"  >
     <div class="modal" :class="{ sale:theme==='sale' }">
-      <h1>{{header}}</h1>
-      <p>{{text}}</p>
-      <!-- <button @click="closeModel" >hide</button> -->
+      <slot> </slot>
+      <!-- <slot>default content </slot> if we dont have anything p amd h3  in the slot in app -->
+      <div class="actions">
+        <slot name="links"></slot>
+       </div>
+ 
     </div>
   </div>
 </template>
@@ -22,7 +25,7 @@
 
  export default {
 
-   props: ["header", "text", "theme"],
+   props: [  "theme"],
    methods: {
       closeModel() {
        this.$emit("close")
