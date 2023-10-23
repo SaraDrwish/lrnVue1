@@ -4,15 +4,34 @@
  -->
 
 <template>
-  <div class="backdrop">
-    <div class="modal">
-      <h1>model title</h1>
-      <p>modal content </p>
+  <!-- //event modifires .self -->
+  <div class="backdrop" @click.self="closeModel"  >
+    <div class="modal" :class="{ sale:theme==='sale' }">
+      <h1>{{header}}</h1>
+      <p>{{text}}</p>
+      <!-- <button @click="closeModel" >hide</button> -->
     </div>
   </div>
 </template>
 
+<!-- 
+  -----------------------------------------------------------
+ -->
 
+ <script>
+
+ export default {
+
+   props: ["header", "text", "theme"],
+   methods: {
+      closeModel() {
+       this.$emit("close")
+     }
+  }
+
+  }
+
+</script>
 
 <!-- 
   -----------------------------------------------------------
@@ -23,8 +42,8 @@
 <style scoped>
 
 .modal{
-  width: 35rem;
-  height: 11rem;
+  width: 44rem;
+  height: 13rem;
   border-radius: 2rem;
   padding: 1%;
   text-align: center;
@@ -43,6 +62,11 @@
   color: mediumturquoise;
   border: none;
  }
+ .sale{
+  background-color: tomato;
+  color: antiquewhite;
+ }
+
 
 </style>
 
