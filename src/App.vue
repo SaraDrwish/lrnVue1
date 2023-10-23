@@ -1,17 +1,25 @@
 <template>
  
      <h1> {{ title}} </h1>
-     <div v-if="showModal">
+     <teleport to=".modals" v-if="showModal">
        <Modal  theme="saaaaaaaaale"  @close="toggleModal"  >
-
         <h3>hello this is a slot try title</h3>
         <p>hi this is a p Lorem ipsum dolor sit amet.</p>
         <template v-slot:links>
               <a href="#">more info</a>
         </template>
        </Modal>
-     </div>
-     <button @click="toggleModal" >open model</button>
+     </teleport>
+
+     <teleport to=".modals" v-if="showModalTwo">
+         <Modal  theme="sale"  @close="toggleModalTwo"  >
+          <h3>sign up here </h3>
+          <p> for updats and promo codes</p>
+         </Modal>
+      </teleport>
+
+       <button @click="toggleModal" >open model</button>
+       <button @click="toggleModalTwo" >open model 2</button>
  </template>
 
 <script>
@@ -49,13 +57,18 @@ import Modal from './components/Modal.vue'
 </script>
 
 <style>
-#app {
+#app , .modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+a{
+  color:unset;
+  display: block;
+  text-decoration: none;
 }
 h1{
   color: #92b0cd;
@@ -68,6 +81,7 @@ h1{
 button{
   border: none;
   padding: 1%;
+  margin: 1%;
   cursor: pointer;
   background: #cfe7ff;
   color: #ff6c91;
@@ -76,3 +90,4 @@ button{
 }
 
 </style>
+
