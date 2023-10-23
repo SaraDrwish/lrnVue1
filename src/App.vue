@@ -1,16 +1,30 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-     <h1> hello vue </h1>
+ 
+     <h1> {{ title}}</h1>
+     <Modal />
  </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-export default {
+
+import Modal from './components/Modal.vue'
+
+ export default {
   name: 'App',
   components: {
-    HelloWorld
+    Modal
+  },
+  data() {
+    return {
+      title:"hello vue :)"
+    }
+  },
+  methods: {
+    handleClick() {
+      // console.log(this.$refs.boo)
+      // this.$refs.boo.classList.add("active")
+    }
   }
+ 
 }
 </script>
 
@@ -22,5 +36,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+h1{
+  color: #92b0cd;
+  font-weight: bolder;
+  border-bottom: 4px rgb(139, 46, 88) solid ;
+  width: 30%;
+  margin: 2% auto;
+  padding: 2%;
 }
 </style>
